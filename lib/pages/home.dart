@@ -23,13 +23,13 @@ class _HomeState extends State<Home> {
         itemCount: 10,
         itemBuilder: (context, index) {
           return ListTile(
-            leading: CircleAvatar(
+            leading: const CircleAvatar(
               backgroundImage: NetworkImage('https://via.placeholder.com/150'),
             ),
             title: Text('Judul Doa ${index + 1}',
-                style: TextStyle(fontWeight: FontWeight.bold)),
-            subtitle: Text('Deskripsi singkat tentang doa ini...'),
-            trailing: Icon(Icons.arrow_forward_ios),
+                style: const TextStyle(fontWeight: FontWeight.bold)),
+            subtitle: const Text('Deskripsi singkat tentang doa ini...'),
+            trailing: const Icon(Icons.arrow_forward_ios),
             onTap: () {},
             tileColor: index % 2 == 0 ? Colors.grey[200] : Colors.white,
             shape: RoundedRectangleBorder(
