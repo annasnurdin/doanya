@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:myapp/model/boxes.dart';
+import 'package:myapp/model/doa.dart';
 import 'pages/home.dart';
 import 'theme/colors.dart';
 
-void main() {
+void main() async {
+  await Hive.initFlutter();
+  Hive.registerAdapter(DoaAdapter());
+  boxDoa = await Hive.openBox<Doa>('doaBox');
+  Doa.initData();
   runApp(const MyApp());
 }
 
@@ -14,9 +21,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        // colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         scaffoldBackgroundColor: primaryColor,
-        fontFamily: GoogleFonts.berkshireSwash().fontFamily,
+        fontFamily: GoogleFonts.montserratAlternates().fontFamily,
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
