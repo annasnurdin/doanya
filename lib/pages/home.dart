@@ -376,6 +376,10 @@ class _HomeState extends State<Home> {
               child: Text(
                 textAlign: TextAlign.right,
                 (boxDoa.get(1) as Doa).arabDoa,
+                style: const TextStyle(
+                  fontSize: 18.0,
+                  fontFamily: 'Arabic',
+                ),
               ),
             ),
         ],
@@ -454,8 +458,8 @@ class _HomeState extends State<Home> {
                     doa.arabDoa,
                     textAlign: TextAlign.right,
                     style: const TextStyle(
-                      fontSize: 16.0,
-                      fontFamily: 'Poppins',
+                      fontSize: 18.0,
+                      fontFamily: 'Arabic',
                     ),
                   ),
                 ),

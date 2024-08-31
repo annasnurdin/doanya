@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
-import 'package:myapp/model/boxes.dart';
 import 'package:myapp/model/doa.dart';
 import 'package:myapp/theme/colors.dart';
 
@@ -47,12 +46,15 @@ class _DetailsDoaState extends State<DetailsDoa> {
           child: Column(
             children: [
               const SizedBox(height: 30),
-              Text(
-                doa.arabDoa,
-                textAlign: TextAlign.right,
-                style: const TextStyle(
-                  fontSize: 28.0,
-                  fontFamily: 'Poppins',
+              Container(
+                alignment: Alignment.centerRight,
+                child: Text(
+                  doa.arabDoa,
+                  textAlign: TextAlign.right,
+                  style: const TextStyle(
+                    fontSize: 28.0,
+                    fontFamily: 'Arabic',
+                  ),
                 ),
               ),
               const SizedBox(height: 30),
