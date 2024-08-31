@@ -18,6 +18,7 @@ class _HomeState extends State<Home> {
   bool baruNyari = false;
   bool _expanded = false;
   bool _isSearching = false;
+  int selectedIndex = 0;
 
   //init
   @override
@@ -133,13 +134,16 @@ class _HomeState extends State<Home> {
                       color: Colors.white10,
                       borderRadius: BorderRadius.circular(40.0),
                     ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        _buildPilihanItem('Doa Harian', isSelected: true),
-                        _buildPilihanItem('Amalan Rutin'),
-                        _buildPilihanItem('Doa-Doa'),
-                      ],
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          _buildPilihanItem('Doa Harian', 0),
+                          _buildPilihanItem('Amalan Rutin', 1),
+                          _buildPilihanItem('Doa-Doa', 2),
+                        ],
+                      ),
                     ),
                   ),
                 ],
@@ -270,19 +274,30 @@ class _HomeState extends State<Home> {
     );
   }
 
-  Widget _buildPilihanItem(String title, {bool isSelected = false}) {
-    return Container(
-      decoration: BoxDecoration(
-        color: isSelected ? secondaryColor : Colors.transparent,
-        borderRadius: BorderRadius.circular(50.0),
-      ),
-      padding: const EdgeInsets.all(11.0),
-      child: Text(
-        title,
-        style: TextStyle(
-          fontSize: 18.0,
-          color: isSelected ? primaryColor : Colors.white,
-          fontWeight: FontWeight.w500,
+  Widget _buildPilihanItem(String title, int index, {bool isSelected = false}) {
+    bool isSelected = index == selectedIndex;
+
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          selectedIndex = index;
+        });
+      },
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+        decoration: BoxDecoration(
+          color: isSelected ? secondaryColor : Colors.transparent,
+          borderRadius: BorderRadius.circular(50.0),
+        ),
+        padding: const EdgeInsets.all(11.0),
+        child: Text(
+          title,
+          style: TextStyle(
+            fontSize: 18.0,
+            color: isSelected ? primaryColor : Colors.white,
+            fontWeight: FontWeight.w500,
+          ),
         ),
       ),
     );
