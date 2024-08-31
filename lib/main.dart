@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:myapp/model/boxes.dart';
 import 'package:myapp/model/doa.dart';
+import 'package:myapp/pages/details.dart';
 import 'pages/home.dart';
 import 'theme/colors.dart';
 
@@ -26,7 +27,11 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: const Home(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const Home(),
+        '/details-doa': (context) => const DetailsDoa(),
+      },
     );
   }
 }

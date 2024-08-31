@@ -105,9 +105,9 @@ class Doa {
           Doa(
               id: 8,
               namaDoa: " Berat di timbangan",
-              arabDoa: " dan disukai Allah",
-              latinDoa:
+              arabDoa:
                   " سُبْحَانَ اللَّهِ وَبِحَمْدِهِ سُبْحَانَ اللَّهِ الْعَظِيمِ",
+              latinDoa: " dan disukai Allah",
               bacaDoa: " SUBHAANALLAAHI WA BIHAMDIHI"));
       boxDoa.put(
           9,
