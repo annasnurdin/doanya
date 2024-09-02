@@ -19,6 +19,7 @@ class _HomeState extends State<Home> {
   bool _expanded = false;
   bool _isSearching = false;
   int selectedIndex = 0;
+  String selectedPilihanItem = 'Doa Harian';
 
   //init
   @override
@@ -136,13 +137,18 @@ class _HomeState extends State<Home> {
                     ),
                     child: SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          _buildPilihanItem('Doa Harian', 0),
-                          _buildPilihanItem('Amalan Rutin', 1),
-                          _buildPilihanItem('Doa-Doa', 2),
-                        ],
+                      child: ConstrainedBox(
+                        constraints: BoxConstraints(
+                          minWidth: MediaQuery.of(context).size.width - 50,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            _buildPilihanItem('Doa Harian', 0),
+                            _buildPilihanItem('Amalan Rutin', 1),
+                            _buildPilihanItem('Doa-Doa', 2),
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -244,9 +250,9 @@ class _HomeState extends State<Home> {
                   padding: const EdgeInsets.only(
                     top: 40.0,
                   ),
-                  child: const Text(
-                    'Doa-Doa Harian',
-                    style: TextStyle(
+                  child: Text(
+                    selectedPilihanItem,
+                    style: const TextStyle(
                       fontSize: 24.0,
                       fontWeight: FontWeight.bold,
                     ),
@@ -281,6 +287,17 @@ class _HomeState extends State<Home> {
       onTap: () {
         setState(() {
           selectedIndex = index;
+
+          if (title == 'Doa Harian') {
+            selectedPilihanItem = 'Doa Harian';
+            // selectedDoaList = boxDoa.values.where((doa) => doa.type == 'harian').toList();
+          } else if (title == 'Amalan Rutin') {
+            selectedPilihanItem = 'Amalan Rutin';
+            // selectedDoaList = boxDoa.values.where((doa) => doa.type == 'rutin').toList();
+          } else if (title == 'Doa-Doa') {
+            selectedPilihanItem = 'Doa-Doa';
+            // selectedDoaList = boxDoa.values.where((doa) => doa.type == 'doa').toList();
+          }
         });
       },
       child: AnimatedContainer(
