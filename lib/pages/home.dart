@@ -41,10 +41,10 @@ class _HomeState extends State<Home> {
       ),
       body: Column(
         children: [
-          const SizedBox(height: 25.0),
+          const SizedBox(height: 23.0),
           // Pilihan
           Container(
-            margin: const EdgeInsets.symmetric(horizontal: 25.0),
+            margin: const EdgeInsets.symmetric(horizontal: 20.0),
             padding: const EdgeInsets.all(5.0),
             decoration: BoxDecoration(
                 color: Colors.white10,
@@ -52,55 +52,76 @@ class _HomeState extends State<Home> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                  decoration: BoxDecoration(
-                    color: secondaryColor,
-                    borderRadius: BorderRadius.circular(50.0),
-                  ),
-                  padding: const EdgeInsets.all(10.0),
-                  child: Text(
-                    'Doa Harian',
-                    style: TextStyle(
-                      fontSize: 18.0,
-                      color: primaryColor,
+                Expanded(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: secondaryColor,
+                      borderRadius: BorderRadius.circular(50.0),
+                    ),
+                    padding: const EdgeInsets.all(10.0),
+                    child: Expanded(
+                      child: Center(
+                        child: Text(
+                          'Doa Harian',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 18.0,
+                            color: primaryColor,
+                          ),
+                        ),
+                      ),
                     ),
                   ),
                 ),
-                Container(
-                  decoration: BoxDecoration(
-                    // color: Colors.white12,
-                    borderRadius: BorderRadius.circular(50.0),
-                  ),
-                  padding: const EdgeInsets.all(10.0),
-                  child: const Text(
-                    'Amalan Rutin',
-                    style: TextStyle(
-                      fontSize: 18.0,
-                      color: Colors.white,
+                const Expanded(child: SizedBox(width: 10)),
+                Expanded(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50.0),
+                    ),
+                    padding: const EdgeInsets.all(10.0),
+                    child: const Expanded(
+                      child: Center(
+                        child: Text(
+                          'Amalan Harian',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 18.0,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
                     ),
                   ),
                 ),
-                Container(
-                  decoration: BoxDecoration(
-                    // color: Colors.white12,
-                    borderRadius: BorderRadius.circular(50.0),
-                  ),
-                  padding: const EdgeInsets.all(10.0),
-                  child: const Text(
-                    'Doa-Doa',
-                    style: TextStyle(
-                      fontSize: 18.0,
-                      color: Colors.white,
+                const Expanded(child: SizedBox(width: 10)),
+                Expanded(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50.0),
+                    ),
+                    padding: const EdgeInsets.all(10.0),
+                    child: const Expanded(
+                      child: Center(
+                        child: Text(
+                          'Doa Harian',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 18.0,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
                     ),
                   ),
                 )
               ],
             ),
           ),
-          const SizedBox(height: 30.0),
+          const SizedBox(height: 20.0),
           // Cari
           Container(
-            margin: const EdgeInsets.symmetric(horizontal: 25.0),
+            margin: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
