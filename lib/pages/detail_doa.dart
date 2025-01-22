@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:myapp/models/doa_model.dart';
 
 import '../theme/colors.dart';
 
 class DetailDoa extends StatelessWidget {
-  DetailDoa({super.key, required this.doa});
+  const DetailDoa({super.key, required this.doa});
   final DoaModel doa;
 
   @override
@@ -22,44 +23,32 @@ class DetailDoa extends StatelessWidget {
                   color: Colors.white, // Ubah warna ikon kembali
                 ),
                 backgroundColor: primaryColor,
-                title: const Text(
-                  "DOA - DOA",
-                  style: TextStyle(
-                    fontSize: 25.0,
+                title: Text(
+                  doa.title,
+                  style: const TextStyle(
+                    fontSize: 20,
                     color: Colors.white,
                   ),
                 ),
-                actions: [
-                  Container(
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.white,
-                    ),
-                    child: IconButton(
-                      icon: const Icon(Icons.notifications_none_rounded,
-                          color: Colors.black, size: 30),
-                      onPressed: () {},
-                    ),
-                  ),
-                ],
               ),
             ),
-
             //SEARCH
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
-              child: TextField(
-                style: const TextStyle(color: Colors.white),
-                decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Colors.white10,
-                  hintText: 'Cari Doa...',
-                  hintStyle: const TextStyle(color: Colors.white38),
-                  prefixIcon: const Icon(Icons.search, color: Colors.white),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30.0),
-                    borderSide: BorderSide.none,
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 15.0, vertical: 10.0),
+                child: TextField(
+                  style: const TextStyle(color: Colors.white),
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.white10,
+                    hintText: 'Cari Doa...',
+                    hintStyle: const TextStyle(color: Colors.white38),
+                    prefixIcon: const Icon(Icons.search, color: Colors.white),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30.0),
+                      borderSide: BorderSide.none,
+                    ),
                   ),
                 ),
               ),
@@ -69,7 +58,39 @@ class DetailDoa extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
-        child: Text(doa.description),
+        child: Column(
+          children: [
+            Text(
+              doa.description,
+              textAlign: TextAlign.center,
+              style: GoogleFonts.scheherazadeNew(
+                fontSize: 23,
+                color: Colors.white,
+                height: 2,
+              ),
+            ),
+            const Divider(color: Colors.white38),
+            Text(
+              doa.caraBaca,
+              style: const TextStyle(
+                fontSize: 18,
+                color: Colors.white,
+                fontStyle: FontStyle.italic,
+                fontWeight: FontWeight.w300,
+              ),
+            ),
+            const Divider(color: Colors.white38),
+            Text(
+              doa.sumber,
+              style: const TextStyle(
+                fontSize: 10,
+                color: Colors.white,
+                fontStyle: FontStyle.italic,
+                fontWeight: FontWeight.w300,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
