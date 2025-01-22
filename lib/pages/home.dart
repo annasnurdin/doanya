@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/models/doa_model.dart';
-import 'package:myapp/pages/detail_doa.dart';
 import 'package:myapp/theme/colors.dart';
 
 class Home extends StatefulWidget {
@@ -11,14 +10,11 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  bool _showDescription = false;
-  // final List<String> doaList =
-  //     List<String>.generate(10, (index) => 'Doa Akan Makan ${index + 1}');
   final doaList = List.generate(
     20,
     (i) => DoaModel(
-      'Doa Akan Makan $i',
-      'Deskripsi Doa $i',
+      'Doa Akan Makan ${i + 1}',
+      'Deskripsi Doa ${i + 1}',
     ),
   );
   @override
@@ -100,41 +96,36 @@ class _HomeState extends State<Home> {
                       ),
                     ],
                   ),
-                  child: ListTile(
-                    leading: const Icon(Icons.book_rounded, color: Colors.blue),
-                    title: Text(
-                      doaList[index].title,
-                      style: const TextStyle(
-                        fontFamily: 'Poppins',
-                        fontSize: 18.0,
-                        fontWeight: FontWeight.bold,
-                      ),
+                  child: Theme(
+                    data: Theme.of(context).copyWith(
+                      dividerColor: Colors.transparent,
+                      splashColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
                     ),
-                    trailing: Row(
-                      mainAxisSize: MainAxisSize.min,
+                    child: ExpansionTile(
+                      leading:
+                          const Icon(Icons.book_rounded, color: Colors.blue),
+                      title: Text(
+                        doaList[index].title,
+                        style: const TextStyle(
+                          fontFamily: 'Poppins',
+                          fontSize: 18.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      childrenPadding: const EdgeInsets.symmetric(
+                          horizontal: 16.0, vertical: 8.0),
                       children: [
-                        const Icon(Icons.favorite_border_rounded,
-                            color: Colors.red),
-                        const SizedBox(width: 8),
-                        IconButton(
-                          icon: const Icon(Icons.arrow_right_rounded,
-                              color: Colors.blue),
-                          onPressed: () {
-                            setState(() {
-                              _showDescription = !_showDescription;
-                            });
-                          },
+                        Text(
+                          doaList[index].description,
+                          style: const TextStyle(
+                            fontSize: 14.0,
+                            color: Colors.grey,
+                            fontStyle: FontStyle.italic,
+                          ),
                         ),
                       ],
                     ),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => DetailDoa(doa: doaList[index]),
-                        ),
-                      );
-                    },
                   ),
                 );
               },
