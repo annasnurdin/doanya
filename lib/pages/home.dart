@@ -9,6 +9,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  bool _showDescription = false;
   final List<String> doaList =
       List<String>.generate(10, (index) => 'Doa Akan Makan ${index + 1}');
   @override
@@ -91,7 +92,7 @@ class _HomeState extends State<Home> {
                     ],
                   ),
                   child: ListTile(
-                    leading: const Icon(Icons.book, color: Colors.blue),
+                    leading: const Icon(Icons.book_rounded, color: Colors.blue),
                     title: Text(
                       doaList[index],
                       style: const TextStyle(
@@ -100,10 +101,24 @@ class _HomeState extends State<Home> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    trailing: const Icon(Icons.favorite_border_rounded,
-                        color: Colors.red),
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        const Icon(Icons.favorite_border_rounded,
+                            color: Colors.red),
+                        const SizedBox(width: 8),
+                        IconButton(
+                          icon: const Icon(Icons.arrow_right_rounded,
+                              color: Colors.blue),
+                          onPressed: () {
+                            setState(() {
+                              _showDescription = !_showDescription;
+                            });
+                          },
+                        ),
+                      ],
+                    ),
                     onTap: () {
-                      // Action saat doa dipilih
                       showDialog(
                         context: context,
                         builder: (context) => AlertDialog(
