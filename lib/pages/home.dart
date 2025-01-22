@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/models/doa_model.dart';
+import 'package:myapp/pages/detail_doa.dart';
 import 'package:myapp/theme/colors.dart';
 
 class Home extends StatefulWidget {
@@ -10,8 +12,15 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   bool _showDescription = false;
-  final List<String> doaList =
-      List<String>.generate(10, (index) => 'Doa Akan Makan ${index + 1}');
+  // final List<String> doaList =
+  //     List<String>.generate(10, (index) => 'Doa Akan Makan ${index + 1}');
+  final doaList = List.generate(
+    20,
+    (i) => DoaModel(
+      'Doa Akan Makan $i',
+      'Deskripsi Doa $i',
+    ),
+  );
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -94,7 +103,7 @@ class _HomeState extends State<Home> {
                   child: ListTile(
                     leading: const Icon(Icons.book_rounded, color: Colors.blue),
                     title: Text(
-                      doaList[index],
+                      doaList[index].title,
                       style: const TextStyle(
                         fontFamily: 'Poppins',
                         fontSize: 18.0,
@@ -119,17 +128,10 @@ class _HomeState extends State<Home> {
                       ],
                     ),
                     onTap: () {
-                      showDialog(
-                        context: context,
-                        builder: (context) => AlertDialog(
-                          title: Text(doaList[index]),
-                          content: const Text('Detail dari doa ini.'),
-                          actions: [
-                            TextButton(
-                              onPressed: () => Navigator.pop(context),
-                              child: const Text('Tutup'),
-                            ),
-                          ],
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => DetailDoa(doa: doaList[index]),
                         ),
                       );
                     },
